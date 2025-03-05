@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Chess Board</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #0a0339;
+            perspective: 2000px;
+        }
+        .chessboard {
+            width: 400px;
+            height: 400px;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            transform: rotateX(30deg) rotateY(0deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        .square {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .black {
+            background: #764c24;
+        }
+        .white {
+            background: #f5e6cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="chessboard" id="chessboard"></div>
+    <script>
+        function createChessBoard() {
+            const board = document.getElementById("chessboard");
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const square = document.createElement("div");
+                    square.className = `square ${(row + col) % 2 === 0 ? 'white' : 'black'}`;
+                    board.appendChild(square);
+                }
+            }
+        }
+        createChessBoard();
+    </script>
+</body>
+</html>
